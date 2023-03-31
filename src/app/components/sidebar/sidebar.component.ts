@@ -12,6 +12,7 @@ export class SidebarComponent{
 
   pause : boolean = false
   showResult : boolean = false
+  page : number
 
   constructor(private el: ElementRef, private dialog: MatDialog){}
 

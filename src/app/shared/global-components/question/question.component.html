@@ -23,16 +23,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="rounded d-flex flex-column bg-white mx-auto mt-3 active p-4 box-shadow question question{{item.id}}" *ngFor="let item of testList | paginate: { itemsPerPage: 10, currentPage: page }">
-                    <h4>Question {{item.id}}: {{item.question}}</h4>
-                    <div class="mt-3" *ngFor="let ans of item.anslistobj">
+                <div class="rounded d-flex flex-column bg-white mx-auto mt-3 active p-4 box-shadow question question{{test.id}}">
+                    <h4>Question {{test.id}}: {{test.question}}</h4>
+                    <div class="mt-3" *ngFor="let ans of test.anslistobj">
                         <div class="form-check">
-                            <input class="form-check-input" name="answer{{item.id}}" id="answer{{item.id}}" type="radio" value="" (click)="clickAnswer(item.id)">
+                            <input class="form-check-input" name="answer{{test.id}}" id="answer{{test.id}}" type="radio" value="" (click)="clickAnswer(test.id)">
                             <label class="form-check-label">{{ans}}</label>
                         </div>
                     </div>
                 </div>
-                <pagination-controls (pageChange)="page = $event" class="text-center m-5"></pagination-controls>
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-4 position-relative p-1">
