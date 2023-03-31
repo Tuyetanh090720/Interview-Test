@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-9 col-md-9 col-sm-8">
-            <div class="question top-60 position-relative">
+            <div class="question-area top-60 position-relative">
                 <div class="rounded bg-white mt-3 p-5 box-shadow">
                     <div class="d-flex flex-row justify-content-between">
                         <div class="logo">
@@ -23,20 +23,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="rounded d-flex flex-column bg-white mx-auto mt-3 active p-4 box-shadow" *ngFor="let item of testList | paginate: { itemsPerPage: 10, currentPage: p }">
+                <div class="rounded d-flex flex-column bg-white mx-auto mt-3 active p-4 box-shadow question question{{item.id}}" *ngFor="let item of testList | paginate: { itemsPerPage: 10, currentPage: page }">
                     <h4>Question {{item.id}}: {{item.question}}</h4>
                     <div class="mt-3" *ngFor="let ans of item.anslistobj">
                         <div class="form-check">
-                            <input class="form-check-input" name="answer{{item.id}}" type="radio" value="" (click)="clickAnswer(item.id)">
+                            <input class="form-check-input" name="answer{{item.id}}" id="answer{{item.id}}" type="radio" value="" (click)="clickAnswer(item.id)">
                             <label class="form-check-label">{{ans}}</label>
                         </div>
                     </div>
                 </div>
-                <pagination-controls (pageChange)="p = $event" class="text-center m-5"></pagination-controls>
+                <pagination-controls (pageChange)="page = $event" class="text-center m-5"></pagination-controls>
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-4 position-relative p-1">
-            <app-sidebar [testList]="testList" [questionStatus]="status"></app-sidebar>
+            <app-sidebar [testList]="testList" (question)="goToquestion($event)"></app-sidebar>
         </div>
     </div>
 </div>

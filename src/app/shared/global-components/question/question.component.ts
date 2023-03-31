@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-question',
@@ -6,10 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class QuestionComponent implements OnInit {
 
-  p : number
-  status : string
+  page : number
 
-  constructor() {}
+  constructor(private el: ElementRef) {}
 
   ngOnInit(): void {
   }
@@ -57,6 +56,24 @@ export class QuestionComponent implements OnInit {
   ];
 
   clickAnswer(id:any){
-    this.status = id
+    const question = this.el.nativeElement.querySelector('.sidebar'+id)
+    question.classList.add('active-check');
+  }
+
+  goToquestion(event : any){
+    const length = this.testList.length
+
+    const pageLength = Math.ceil(length/10)
+
+    const positionQuestion = Math.ceil(event/10)
+
+    for(let i = 1; i<= pageLength; i++ ){
+      if(positionQuestion == i){
+        this.page = positionQuestion
+      }
+    }
+
+    const question = this.el.nativeElement.querySelector('.question' + event)
+    question.scrollIntoView()
   }
 }

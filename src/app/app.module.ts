@@ -14,7 +14,7 @@ import { CountdownTimerComponent } from './shared/global-components/countdown-ti
 import { ResultComponent } from './components/result/result.component';
 import { ThanksComponent } from './components/thanks/thanks.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [

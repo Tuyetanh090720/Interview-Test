@@ -1,16 +1,23 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ResultComponent } from 'src/app/components/result/result.component';
+
 
 @Component({
   selector: 'app-countdown-timer',
   templateUrl: './countdown-timer.component.html'
 })
-export class CountdownTimerComponent {
+export class CountdownTimerComponent implements OnInit {
+
+  @Input() currentTime : boolean
 
   minuteIndex: any;
   secondIndex: any;
 
-  constructor() {
-    this.timer(2);
+  constructor(private dialog: MatDialog){}
+
+  ngOnInit(): void {
+    this.timer(30);
   }
 
   timer(minute: any) {
@@ -25,7 +32,6 @@ export class CountdownTimerComponent {
       if (statSec != 0) statSec--;
       else statSec = 59;
 
-
       if (statSec < 10) {
         textSec = "0" + statSec;
       } else textSec = statSec;
@@ -33,10 +39,15 @@ export class CountdownTimerComponent {
       this.minuteIndex = `${prefixMinute}${Math.floor(seconds / 60)}`
       this.secondIndex = `${textSec}`;
 
+      if (this.currentTime) {
+        clearInterval(timer);
+      }
+
       if (seconds == 0) {
-        console.log("finished");
+        const dialogRef = this.dialog.open(ResultComponent);
+        dialogRef.afterClosed().subscribe(result => {});
         clearInterval(timer);
       }
     }, 1000);
-}
+  }
 }

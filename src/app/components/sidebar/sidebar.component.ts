@@ -1,5 +1,5 @@
-import { Component, Input, ElementRef } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Input, ElementRef, Output, EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ResultComponent } from '../result/result.component';
 
 @Component({
@@ -8,12 +8,20 @@ import { ResultComponent } from '../result/result.component';
 })
 export class SidebarComponent{
   @Input() testList: any
-  @Input() questionStatus: any
+  @Output() question: EventEmitter<string> =   new EventEmitter();
 
-  constructor(public dialog: MatDialog ){}
+  pause : boolean = false
+  showResult : boolean = false
 
-  openResult(): void {
-    console.log("oke")
-    this.dialog.open(ResultComponent);
+  constructor(private el: ElementRef, private dialog: MatDialog){}
+
+  openResult() {
+    this.pause = true
+
+    const dialogRef = this.dialog.open(ResultComponent);
+  }
+
+  toQuestion(id : any) {
+    this.question.emit(id)
   }
 }

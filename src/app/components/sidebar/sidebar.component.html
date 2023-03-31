@@ -1,13 +1,13 @@
 <div class="rounded nav position-fixed max-width-20 top-60 mt-3 box-shadow bg-white border">
     <div class="w-100 ">
-        <app-countdown-timer></app-countdown-timer>
+        <app-countdown-timer [currentTime]="pause"></app-countdown-timer>
     </div>
     <div class="mt-3 p-2 grid-6">
-        <div class="border border-radius-3 m-2 p-2 text-center" *ngFor=" let item of testList" id="{{item.id}}" [class.active-check]="questionStatus === item.id">
+        <div class="border border-radius-3 m-2 p-2 text-center sidebar{{item.id}}" *ngFor=" let item of testList" (click)="toQuestion(item.id)">
             <span>{{item.id}}</span>
         </div>
     </div>
     <div class="my-3 w-100 text-center ">
-        <button type="button " class="btn btn-danger" (click)="openResult()">Submit</button>
+        <button class="btn btn-danger" (click)="openResult()">Submit</button>
     </div>
 </div>
