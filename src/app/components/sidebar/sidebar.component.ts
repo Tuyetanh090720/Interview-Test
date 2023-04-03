@@ -13,6 +13,8 @@ export class SidebarComponent{
   pause : boolean = false
   showResult : boolean = false
   page : number
+  sidebarQuestion : string
+
 
   constructor(private el: ElementRef, private dialog: MatDialog){}
 
@@ -24,5 +26,8 @@ export class SidebarComponent{
 
   toQuestion(id : any) {
     this.question.emit(id)
+
+    this.sidebarQuestion = id
+    console.log(id)
   }
 }
