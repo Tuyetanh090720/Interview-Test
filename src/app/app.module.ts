@@ -15,6 +15,7 @@ import { ResultComponent } from './components/result/result.component';
 import { ThanksComponent } from './components/thanks/thanks.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ConfirmationComponent } from './shared/global-components/confirmation/confirmation.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     ResultComponent,
     ThanksComponent,
     SidebarComponent,
+    ConfirmationComponent,
   ],
   imports: [
     BrowserModule,

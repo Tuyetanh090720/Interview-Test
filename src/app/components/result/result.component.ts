@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-
 import { MatDialogRef } from '@angular/material/dialog';
-import { ThanksComponent } from '../thanks/thanks.component';
 
 @Component({
   selector: 'app-result',
@@ -9,9 +7,9 @@ import { ThanksComponent } from '../thanks/thanks.component';
 })
 export class ResultComponent {
 
-  constructor(public dialogRef: MatDialogRef<ThanksComponent>) { }
+  constructor(public dialogResult: MatDialogRef<ResultComponent>) { }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogResult.close();
   }
 }

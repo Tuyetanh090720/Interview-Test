@@ -1,6 +1,6 @@
 import { Component, Input, ElementRef, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ResultComponent } from '../result/result.component';
+import { ConfirmationComponent } from '../../shared/global-components/confirmation/confirmation.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,24 +10,20 @@ export class SidebarComponent{
   @Input() testList: any
   @Output() question: EventEmitter<string> =   new EventEmitter();
 
-  pause : boolean = false
   showResult : boolean = false
   page : number
-  sidebarQuestion : string
+  sidebarQuestion : string = '1'
 
 
   constructor(private el: ElementRef, private dialog: MatDialog){}
 
-  openResult() {
-    this.pause = true
-
-    const dialogRef = this.dialog.open(ResultComponent);
+  confirmSubmission() {
+    const dialogRef = this.dialog.open(ConfirmationComponent);
   }
 
   toQuestion(id : any) {
     this.question.emit(id)
 
     this.sidebarQuestion = id
-    console.log(id)
   }
 }
