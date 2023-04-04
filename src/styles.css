@@ -143,7 +143,7 @@
     }
 
     .focus {
-        background: rgba(50, 115, 220, 0.1);
+        background: rgb(255, 192, 203, 0.3);
         border: rgba(0, 0, 0, 0.2) 1px solid !important;
     }
 
